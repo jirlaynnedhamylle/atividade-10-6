@@ -1,13 +1,26 @@
 function validarFormulario() {
-    var nome = document.getElementById('nome').value;
+    var nomeAluno = document.getElementById('nome').value;
     var nascimento = document.getElementById('nascimento').value;
-    var email = document.getElementById('email').value;
+    var nomeMae = document.getElementById('nomeMae').value;
+    var nomePai = document.getElementById('nomePai').value;
     var telefone = document.getElementById('telefone').value;
-    var atividades = document.querySelectorAll('.form-check-input:checked');
+    var email = document.getElementById('email').value;
+    var turnoSelecionado = document.querySelector('input[name="turno"]:checked');
+    var atividadesExtracurriculares = document.querySelectorAll('.form-check-input:checked');
+
+    var atividadesSelecionadas = [];
+    var atividadesExtracurricularesSelecionadas = [];
+
+    atividadesExtracurriculares.forEach(function (atividade) {
+        var atividadeValue = atividade.value;
+        if (atividadeValue !== "manha" && atividadeValue !== "tarde" && atividadeValue !== "noite") {
+            atividadesExtracurricularesSelecionadas.push(atividadeValue);
+        }
+    });
 
     var erros = [];
 
-    if (!nome || !nascimento || !email || !telefone) {
+    if (!nomeAluno || !nascimento || !email || !telefone) {
         erros.push('Todos os campos são obrigatórios.');
     }
 
@@ -15,15 +28,23 @@ function validarFormulario() {
         erros.push('Data de nascimento inválida.');
     }
 
-    if (!isValidEmail(email)) {
-        erros.push('E-mail inválido.');
+    if (!nomeMae || !nomePai) {
+        erros.push('Os nomes da mãe e do pai são obrigatórios.');
     }
 
     if (!isValidDDD(telefone)) {
         erros.push('Telefone (com DDD) inválido.');
     }
 
-    if (atividades.length > 3) {
+    if (!isValidEmail(email)) {
+        erros.push('E-mail inválido.');
+    }
+
+    if (!turnoSelecionado) {
+        erros.push('Selecione o turno.');
+    }
+
+    if (atividadesExtracurricularesSelecionadas.length > 3) {
         erros.push('Selecione no máximo 3 atividades extracurriculares.');
     }
 
@@ -51,6 +72,6 @@ function isValidEmail(email) {
 }
 
 function isValidDDD(telefone) {
-    var dddRegex = /^\d{2,5}-\d{4}-\d{4}$/;
+    var dddRegex = /^\d{2}-\d{9}$/;
     return telefone.match(dddRegex);
 }
