@@ -9,7 +9,7 @@
     <h1>Formulário de Cadastro</h1>
     <form id="formulario">
         <div class="form-group">
-            <label for="nome">Nome:</label>
+            <label for="nome">Nome do Aluno:</label>
             <input type="text" class="form-control" id="nome" placeholder="Nome" required>
         </div>
         <div class="form-group">
@@ -17,30 +17,71 @@
             <input type="date" class="form-control" id="nascimento" required>
         </div>
         <div class="form-group">
+            <label for="nomeMae">Nome da Mãe:</label>
+            <input type="text" class="form-control" id="nomeMae" placeholder="Nome da Mãe">
+        </div>
+        <div class="form-group">
+            <label for="nomePai">Nome do Pai:</label>
+            <input type="text" class="form-control" id="nomePai" placeholder="Nome do Pai">
+        </div>     
+        <div class="form-group">
+            <label for="telefone">Telefone (com DDD):</label>
+            <input type="tel" class="form-control" id="telefone" placeholder="Telefone" pattern="^\d{2,5}-\d{4}-\d{4}$" required>
+        </div>   
+        <div class="form-group">
             <label for="email">E-mail:</label>
             <input type="email" class="form-control" id="email" placeholder="E-mail" required>
         </div>
         <div class="form-group">
-            <label for="telefone">Telefone (com DDD):</label>
-            <input type="tel" class="form-control" id="telefone" placeholder="Telefone" pattern="^\d{2,5}-\d{4}-\d{4}$" required>
+            <label for="serie">Série:</label>
+            <select class="form-control" id="serie" required>
+                <option value="" disabled selected>Selecione a série</option>
+                <option value="1">Pré-Escolar</option>
+                <option value="2">Ensino Fundamental I</option>
+                <option value="3">Ensino Fundamental II</option>
+                <option value="4">Ensino Médio</option>
+            </select>
         </div>
         <div class="form-group">
-            <label>Atividades Extracurriculares (selecione até 3):</label>
+            <label>Turno:</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="turnoManha" value="manha">
+                <label class="form-check-label" for="turnoManha">Manhã</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="turnoTarde" value="tarde">
+                <label class="form-check-label" for="turnoTarde">Tarde</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="turnoNoite" value="noite">
+                <label class="form-check-label" for="turnoNoite">Noite</label>
+            </div>
+        </div>                
+        <div class="form-group">
+            <label>Atividades Extracurriculares:</label>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="atividade1">
-                <label class="form-check-label" for="atividade1">Atividade 1</label>
+                <input type="checkbox" class="form-check-input" id="atividade1" value="informatica">
+                <label class="form-check-label" for="atividade1">Informática</label>
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="atividade2">
-                <label class="form-check-label" for="atividade2">Atividade 2</label>
+                <input type="checkbox" class="form-check-input" id="atividade2" value="musica">
+                <label class="form-check-label" for="atividade2">Música</label>
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="atividade3">
-                <label class="form-check-label" for="atividade3">Atividade 3</label>
+                <input type="checkbox" class="form-check-input" id="atividade3" value="balet">
+                <label class="form-check-label" for="atividade3">Balet</label>
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="atividade4">
-                <label class="form-check-label" for="atividade4">Atividade 4</label>
+                <input type="checkbox" class="form-check-input" id="atividade4" value="pintura">
+                <label class="form-check-label" for="atividade4">Pintura</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="atividade5" value="judo">
+                <label class="form-check-label" for="atividade5">Judô</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="atividade6" value="futebol">
+                <label class="form-check-label" for="atividade6">Futebol</label>
             </div>
         </div>
         <button class="btn btn-primary" onclick="validarFormulario()">Enviar Formulário</button>
